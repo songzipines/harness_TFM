@@ -1,0 +1,10 @@
+# Install torch 2.9.1 + CUDA 12.8 from the official PyTorch index separately.
+# Install LimiX EDITABLE from the pinned official source; do not pip install limix.
+-r core.txt
+tabpfn==9.2.0
+tabicl==2.2.0
+kditransform==1.2.0
+nvtx==0.2.16
+huggingface-hub==0.36.2
+triton-windows==3.5.1.post24; sys_platform == 'win32'
+triton==3.5.1; sys_platform == 'linux'

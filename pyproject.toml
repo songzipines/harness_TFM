@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "harness-tfm-pilot"
+version = "0.1.0"
+description = "Reproducible pilot for the selection space among three tabular foundation models"
+requires-python = ">=3.12"
+dependencies = ["numpy==2.2.6", "pandas==2.3.3", "scikit-learn==1.7.2", "pyarrow==26.0.0", "psutil>=5"]
+
+[tool.setuptools.packages.find]
+include = ["harness*"]

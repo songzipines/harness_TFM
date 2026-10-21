@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "experiment": "tfm-selection-space-core-v1",
+  "runtime_root": "../../tfm_runtime",
+  "output_subdir": "pilot_runs/core-v1",
+  "models": ["tabpfn", "tabicl", "limix"],
+  "model_seed": 42,
+  "order_seed": 20261020,
+  "cpu_threads": 4,
+  "timeout_s": 1200
+}

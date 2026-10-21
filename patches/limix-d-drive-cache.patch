@@ -1,0 +1,15 @@
+diff --git a/inference/v2_0/predictor.py b/inference/v2_0/predictor.py
+index afc9628..f393c23 100644
+--- a/inference/v2_0/predictor.py
++++ b/inference/v2_0/predictor.py
+@@ -475,7 +475,9 @@ class LimiXPredictor:
+         """
+         warn_unsupported_predictor_kwargs(kwargs)
+         # Initialize the cache manager
+-        self.cache_manager = self.CacheManager(cache_dir="/mnt/public/lijiansheng0830cache")
++        self.cache_manager = self.CacheManager(
++            cache_dir=os.environ.get("LIMIX_CACHE_DIR", "/mnt/public/lijiansheng0830cache")
++        )
+         self.use_data_cache = use_data_cache
+ 
+         inference_config, inference_pipeline_config = _load_v2_inference_config(inference_config)

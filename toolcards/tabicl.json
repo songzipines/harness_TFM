@@ -1,0 +1,11 @@
+{
+  "id": "tabicl",
+  "version": "v2",
+  "package": "tabicl==2.2.0",
+  "tasks": ["binary", "multiclass", "regression"],
+  "adapter": "harness.adapters.TabICLAdapter",
+  "source": "https://github.com/soda-inria/tabicl",
+  "inference_policy": "8 estimators; local classification/regression checkpoints; no auto download",
+  "evidence_scope": "Local synthetic engineering checks only; no pilot winner claims",
+  "benchmark_memory": []
+}

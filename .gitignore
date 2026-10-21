@@ -1,0 +1,26 @@
+# Runtime assets stay outside this source repository.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.log
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+*.parquet
+*.arff
+*.npz
+cache/
+weights/
+data/
+runs/
+artifacts/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.DS_Store

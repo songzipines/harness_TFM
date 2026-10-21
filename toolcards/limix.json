@@ -1,0 +1,13 @@
+{
+  "id": "limix",
+  "version": "LimiX-2",
+  "package": "Official LimiX source 2.0.0",
+  "tasks": ["binary", "multiclass", "regression"],
+  "adapter": "harness.adapters.LimiXAdapter",
+  "source": "https://github.com/limix-ldm-ai/LimiX",
+  "inference_policy": "Frozen no-retrieval v2 configs: 32 classification / 8 regression pipelines",
+  "input_requirement": "Preserve numeric and categorical DataFrame column types",
+  "cost_note": "Each predict call processes fit context; some all_data transforms may use current query X",
+  "evidence_scope": "Local synthetic engineering checks only; no pilot winner claims",
+  "benchmark_memory": []
+}

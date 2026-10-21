@@ -1,0 +1,11 @@
+{
+  "id": "tabpfn",
+  "version": "3.5",
+  "package": "tabpfn==9.2.0",
+  "tasks": ["binary", "multiclass", "regression"],
+  "adapter": "harness.adapters.TabPFNAdapter",
+  "source": "https://github.com/PriorLabs/TabPFN",
+  "inference_policy": "Official V3_5 standard factory; record resolved auto ensemble size",
+  "evidence_scope": "Local synthetic engineering checks only; no pilot winner claims",
+  "benchmark_memory": []
+}

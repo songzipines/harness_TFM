@@ -1,0 +1,818 @@
+{
+  "schema_version": 1,
+  "python": "3.12.15",
+  "required_packages": {
+    "torch": "2.9.1+cu128",
+    "tabpfn": "9.2.0",
+    "tabicl": "2.2.0",
+    "LimiX": "2.0.0",
+    "numpy": "2.2.6",
+    "scipy": "1.16.2",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "pyarrow": "26.0.0"
+  },
+  "models": {
+    "tabpfn": {
+      "model_version": "3.5",
+      "library_version": "9.2.0",
+      "checkpoint": "weights/tabpfn/tabpfn-v3.5-20260909.safetensors",
+      "entrypoints": [
+        "tabpfn.TabPFNClassifier",
+        "tabpfn.TabPFNRegressor"
+      ],
+      "version_factory": "create_default_for_version(ModelVersion.V3_5)",
+      "resolved_estimators": 8,
+      "random_state": 42,
+      "verified_tasks": [
+        "binary",
+        "multiclass",
+        "regression"
+      ]
+    },
+    "tabicl": {
+      "model_version": "v2",
+      "library_version": "2.2.0",
+      "classification_checkpoint": "weights/tabicl/tabicl-classifier-v2-20260212.ckpt",
+      "regression_checkpoint": "weights/tabicl/tabicl-regressor-v2-20260212.ckpt",
+      "entrypoints": [
+        "tabicl.TabICLClassifier",
+        "tabicl.TabICLRegressor"
+      ],
+      "n_estimators": 8,
+      "random_state": 42,
+      "allow_auto_download": false,
+      "n_jobs": 4,
+      "verified_tasks": [
+        "binary",
+        "multiclass",
+        "regression"
+      ]
+    },
+    "limix": {
+      "model_version": "LimiX-2",
+      "library_version": "2.0.0",
+      "source_commit": "516bf396333feb3198cf7aff8a6c10421f218e24",
+      "cache_path_patch_sha256": "3d2d2980ed5ab4e28d8434dc97f37a6873ee0967b2a8d91acbb05532fef0e214",
+      "checkpoint": "weights/limix/LimiX-2.ckpt",
+      "classification_config": "sources/LimiX/config/cls_default_noretrieval_v2.json",
+      "regression_config": "sources/LimiX/config/reg_default_noretrieval_v2.json",
+      "entrypoint": "inference.predictor.LimiXPredictor",
+      "classification_members": 32,
+      "regression_members": 8,
+      "seed": 42,
+      "use_data_cache": false,
+      "preprocess_num_jobs": 4,
+      "verified_tasks": [
+        "binary",
+        "multiclass",
+        "regression"
+      ],
+      "classification_config_sha256": "bde1e3d9693c6f51d32d28d3491becfe684494467373507aa3c820a4c616aba5",
+      "regression_config_sha256": "3047fc97631e5fa1df9141b62e3c7f02edb5f7356b37e4eecaefd0b18cda5ff8",
+      "classification_config_content_sha256": "e3e2b22f0c0c3c862b69372e5f6c5fe7d7984397825595dd8733d376c0abb0d3",
+      "regression_config_content_sha256": "c70eb2e464d5526e314f24fe47eb0f2c666b47eab76200f375c28c19acea33bf"
+    }
+  },
+  "weights": [
+    {
+      "model": "TabPFN-3.5",
+      "repo": "Prior-Labs/tabpfn_3_5",
+      "revision": "06bf2ba35c80a92a3b9abb436b99cf49e7a0365e",
+      "file": "tabpfn-v3.5-20260909.safetensors",
+      "directory": "tabpfn",
+      "bytes": 876027932,
+      "sha256": "ece4d67eadfea42eb0e610df5189bea60cb7f31073d81e9c7a019b76eacf0be3",
+      "relative_path": "weights/tabpfn/tabpfn-v3.5-20260909.safetensors"
+    },
+    {
+      "model": "TabICLv2-classifier",
+      "repo": "jingang/TabICL",
+      "revision": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+      "file": "tabicl-classifier-v2-20260212.ckpt",
+      "directory": "tabicl",
+      "bytes": 110368038,
+      "sha256": "bdc7dbd5e4ff21f8f0456fcf90c6b7cdf72dbea960f2d05b19bec19f9b3d4ed0",
+      "relative_path": "weights/tabicl/tabicl-classifier-v2-20260212.ckpt"
+    },
+    {
+      "model": "TabICLv2-regressor",
+      "repo": "jingang/TabICL",
+      "revision": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+      "file": "tabicl-regressor-v2-20260212.ckpt",
+      "directory": "tabicl",
+      "bytes": 114324594,
+      "sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+      "relative_path": "weights/tabicl/tabicl-regressor-v2-20260212.ckpt"
+    },
+    {
+      "model": "LimiX-2",
+      "repo": "stable-ai/LimiX-2",
+      "revision": "de07b679e74a41b50b9de18251a8fa245e537440",
+      "file": "LimiX-2.ckpt",
+      "directory": "limix",
+      "bytes": 1625774719,
+      "sha256": "ed01f7a0a18d25451bc9d1058b479ba6b68048aa1ebde06156c8fcfaf8b8fe81",
+      "relative_path": "weights/limix/LimiX-2.ckpt"
+    }
+  ],
+  "datasets": [
+    {
+      "name": "credit-g",
+      "openml_name": "credit-g",
+      "dataset_id": 46918,
+      "task_id": 363626,
+      "problem_type": "binary",
+      "n_rows": 1000,
+      "n_features": 20,
+      "target": "good_or_bad_customer",
+      "feature_names": [
+        "checking_status",
+        "duration_months",
+        "credit_history",
+        "credit_purpose",
+        "credit_amount",
+        "savings_status",
+        "employment_since",
+        "installment_rate_percent",
+        "personal_status_sex",
+        "other_debtors",
+        "residence_since",
+        "property",
+        "age_years",
+        "other_installment_plans",
+        "housing",
+        "existing_credits_count",
+        "job",
+        "people_liable",
+        "telephone",
+        "foreign_worker"
+      ],
+      "ignored_columns": [],
+      "categorical_columns": [
+        "checking_status",
+        "credit_history",
+        "credit_purpose",
+        "savings_status",
+        "employment_since",
+        "personal_status_sex",
+        "other_debtors",
+        "property",
+        "other_installment_plans",
+        "housing",
+        "job",
+        "telephone",
+        "foreign_worker"
+      ],
+      "relative_data_path": "credit-g/data.parquet",
+      "dtypes": {
+        "checking_status": "category",
+        "duration_months": "int64",
+        "credit_history": "category",
+        "credit_purpose": "category",
+        "credit_amount": "int64",
+        "savings_status": "category",
+        "employment_since": "category",
+        "installment_rate_percent": "int64",
+        "personal_status_sex": "category",
+        "other_debtors": "category",
+        "residence_since": "int64",
+        "property": "category",
+        "age_years": "int64",
+        "other_installment_plans": "category",
+        "housing": "category",
+        "existing_credits_count": "int64",
+        "job": "category",
+        "people_liable": "int64",
+        "telephone": "category",
+        "foreign_worker": "category",
+        "good_or_bad_customer": "category"
+      },
+      "data_sha256": "8b0694bd6a3556ce3d25f7d2dd5c631c9e832d757636aabb1d631badbce477d0",
+      "raw_arff_sha256": "6149f09b7aee6fb8573afa4abe24113656c4a18a0f15568a386ff703611e8d84",
+      "raw_arff_md5": "4a6d9d5ac9ef10ced7b8c5b499499c26",
+      "official_splits_sha256": "8eaeca1e8b783d94604a04a2ce4af14c4d643ca6d88249741cbe87cee4a541eb",
+      "splits": [
+        {
+          "relative_path": "credit-g/splits/s0.json",
+          "indices_sha256": "88e392a985ccbf9db55f1fbe55d146588a8507661c92258b88eb9012fbd2238e",
+          "counts": {
+            "fit": 532,
+            "validation": 134,
+            "test": 334
+          }
+        },
+        {
+          "relative_path": "credit-g/splits/s1.json",
+          "indices_sha256": "d897251aaeae83979c32a5342662a680c378eed3bb5ce53284792290f5825f8c",
+          "counts": {
+            "fit": 532,
+            "validation": 134,
+            "test": 334
+          }
+        },
+        {
+          "relative_path": "credit-g/splits/s2.json",
+          "indices_sha256": "4146a1543fe25adb0bb8e6367558f64e3ebbc867dc06eae7c43f3400a594d32d",
+          "counts": {
+            "fit": 532,
+            "validation": 134,
+            "test": 334
+          }
+        }
+      ],
+      "note": "Development pilot; full-table metadata is for auditing, not a router input."
+    },
+    {
+      "name": "qsar-biodeg",
+      "openml_name": "qsar-biodeg",
+      "dataset_id": 46952,
+      "task_id": 363696,
+      "problem_type": "binary",
+      "n_rows": 1054,
+      "n_features": 41,
+      "target": "Biodegradable",
+      "feature_names": [
+        "Laplace_Leading_Eigenvalue",
+        "Weighted_Balaban_Index_Barysz_Matrix",
+        "Num_Heavy_Atoms",
+        "Freq_NN_At_Dist1",
+        "Freq_CN_At_Dist4",
+        "Num_ssssC_Atoms",
+        "Num_Substituted_BenzeneC",
+        "Percentage_C_Atoms",
+        "Num_Terminal_PrimaryC",
+        "Num_Oxygen_Atoms",
+        "Freq_CN_At_Dist3",
+        "Sum_dssC_EStates",
+        "Weighted_HyperWiener_Index_Burden_Matrix",
+        "Lopping_Centric_Index",
+        "Laplace_Spectral_Moment6",
+        "Freq_CO_At_Dist3",
+        "Mean_Sanderson_Electronegativity",
+        "Mean_Ionization_Potential",
+        "Num_N_Hydrazine",
+        "Num_Aromatic_Nitro_Groups",
+        "Num_CRX3",
+        "Weighted_Normalized_SpectralPositiveSum_Burden_Matrix",
+        "Num_Circuits",
+        "Presence_CBr_At_Dist1",
+        "Presence_CCl_At_Dist3",
+        "N073_chemical_substructure",
+        "Adjacency_LeadingEigenvalue",
+        "Intrinsic_State_Pseudoconnectivity",
+        "Presence_CBr_At_Dist4",
+        "Sum_dO_EStates",
+        "Laplace_MoharIndex2",
+        "Num_RingTertiaryC",
+        "C026_chemical_substructure",
+        "Freq_CN_At_Dist2",
+        "Num_HBond_Donors_Atoms",
+        "Weighted_LeadingEigenvalue_Burden_Matrix",
+        "Intrinsic_State_Pseudoconnectivity_SAvg",
+        "Num_Nitrogen_Atoms",
+        "Weighted_SpectralMoment6_Burden_Matrix",
+        "Num_Esters",
+        "Num_Halogen_Atoms"
+      ],
+      "ignored_columns": [],
+      "categorical_columns": [
+        "Presence_CBr_At_Dist1",
+        "Presence_CCl_At_Dist3",
+        "N073_chemical_substructure",
+        "Presence_CBr_At_Dist4",
+        "C026_chemical_substructure"
+      ],
+      "relative_data_path": "qsar-biodeg/data.parquet",
+      "dtypes": {
+        "Laplace_Leading_Eigenvalue": "float64",
+        "Weighted_Balaban_Index_Barysz_Matrix": "float64",
+        "Num_Heavy_Atoms": "int64",
+        "Freq_NN_At_Dist1": "int64",
+        "Freq_CN_At_Dist4": "int64",
+        "Num_ssssC_Atoms": "int64",
+        "Num_Substituted_BenzeneC": "int64",
+        "Percentage_C_Atoms": "float64",
+        "Num_Terminal_PrimaryC": "int64",
+        "Num_Oxygen_Atoms": "int64",
+        "Freq_CN_At_Dist3": "int64",
+        "Sum_dssC_EStates": "float64",
+        "Weighted_HyperWiener_Index_Burden_Matrix": "float64",
+        "Lopping_Centric_Index": "float64",
+        "Laplace_Spectral_Moment6": "float64",
+        "Freq_CO_At_Dist3": "int64",
+        "Mean_Sanderson_Electronegativity": "float64",
+        "Mean_Ionization_Potential": "float64",
+        "Num_N_Hydrazine": "int64",
+        "Num_Aromatic_Nitro_Groups": "int64",
+        "Num_CRX3": "int64",
+        "Weighted_Normalized_SpectralPositiveSum_Burden_Matrix": "float64",
+        "Num_Circuits": "int64",
+        "Presence_CBr_At_Dist1": "category",
+        "Presence_CCl_At_Dist3": "category",
+        "N073_chemical_substructure": "category",
+        "Adjacency_LeadingEigenvalue": "float64",
+        "Intrinsic_State_Pseudoconnectivity": "float64",
+        "Presence_CBr_At_Dist4": "category",
+        "Sum_dO_EStates": "float64",
+        "Laplace_MoharIndex2": "float64",
+        "Num_RingTertiaryC": "int64",
+        "C026_chemical_substructure": "category",
+        "Freq_CN_At_Dist2": "int64",
+        "Num_HBond_Donors_Atoms": "int64",
+        "Weighted_LeadingEigenvalue_Burden_Matrix": "float64",
+        "Intrinsic_State_Pseudoconnectivity_SAvg": "float64",
+        "Num_Nitrogen_Atoms": "int64",
+        "Weighted_SpectralMoment6_Burden_Matrix": "float64",
+        "Num_Esters": "int64",
+        "Num_Halogen_Atoms": "int64",
+        "Biodegradable": "category"
+      },
+      "data_sha256": "2fd8847f0480cd31f61183f797996897b070b847671c001a38e137d321c9e770",
+      "raw_arff_sha256": "558eb643ae68638cc40aa3f0e869a5f665dd4afe18af5651c36afb89074096df",
+      "raw_arff_md5": "48f4696362b73acc569fc13a1510b8c8",
+      "official_splits_sha256": "e2ad9b59b06c92efafc5a9e3e89a358fc7737dece24db295595c75962f3154d2",
+      "splits": [
+        {
+          "relative_path": "qsar-biodeg/splits/s0.json",
+          "indices_sha256": "c96c206f9ec150cada629f1088b16555b5a8f4cc0507e8a8a67bd8c9ac7c56c7",
+          "counts": {
+            "fit": 561,
+            "validation": 141,
+            "test": 352
+          }
+        },
+        {
+          "relative_path": "qsar-biodeg/splits/s1.json",
+          "indices_sha256": "b3aefd9dab8d810c6e32e1d50b34237fe3cb837deff3bd46b4ab6849b3389b9b",
+          "counts": {
+            "fit": 561,
+            "validation": 141,
+            "test": 352
+          }
+        },
+        {
+          "relative_path": "qsar-biodeg/splits/s2.json",
+          "indices_sha256": "a1ff87e02670e18abde65eda533ef0023c969fa36de722739c3c30aa218a810d",
+          "counts": {
+            "fit": 561,
+            "validation": 141,
+            "test": 352
+          }
+        }
+      ],
+      "note": "Development pilot; full-table metadata is for auditing, not a router input."
+    },
+    {
+      "name": "website_phishing",
+      "openml_name": "website_phishing",
+      "dataset_id": 46963,
+      "task_id": 363707,
+      "problem_type": "multiclass",
+      "n_rows": 1353,
+      "n_features": 9,
+      "target": "WebsiteType",
+      "feature_names": [
+        "SFH",
+        "popUpWidnow",
+        "SSLfinal_State",
+        "Request_URL",
+        "URL_of_Anchor",
+        "web_traffic",
+        "URL_Length",
+        "age_of_domain",
+        "having_IP_Address"
+      ],
+      "ignored_columns": [],
+      "categorical_columns": [
+        "SFH",
+        "popUpWidnow",
+        "SSLfinal_State",
+        "Request_URL",
+        "URL_of_Anchor",
+        "web_traffic",
+        "URL_Length",
+        "age_of_domain",
+        "having_IP_Address"
+      ],
+      "relative_data_path": "website_phishing/data.parquet",
+      "dtypes": {
+        "SFH": "category",
+        "popUpWidnow": "category",
+        "SSLfinal_State": "category",
+        "Request_URL": "category",
+        "URL_of_Anchor": "category",
+        "web_traffic": "category",
+        "URL_Length": "category",
+        "age_of_domain": "category",
+        "having_IP_Address": "category",
+        "WebsiteType": "category"
+      },
+      "data_sha256": "c0b7900f7e86cfbb3eabe124c4c428302a13ce8d71faada7fe0257184e8e45f2",
+      "raw_arff_sha256": "99b5d00d9cbe64b070d956c72c659d0fe2f61f9f247408209e614a6a704bf6bc",
+      "raw_arff_md5": "b167553818278383e4c2210cdbe3b1f6",
+      "official_splits_sha256": "aef0c87787ad12fd6673925f56747396b8177c274850e5603b4c65071c44ee12",
+      "splits": [
+        {
+          "relative_path": "website_phishing/splits/s0.json",
+          "indices_sha256": "83376e76450d2ab800713e6f05c14c89759f0ed127434dac2de0893c443b2d41",
+          "counts": {
+            "fit": 721,
+            "validation": 181,
+            "test": 451
+          }
+        },
+        {
+          "relative_path": "website_phishing/splits/s1.json",
+          "indices_sha256": "85793ede999ccf6b488f036ddc6b7582b183e7d570b77d18e73b6337f35c11d6",
+          "counts": {
+            "fit": 721,
+            "validation": 181,
+            "test": 451
+          }
+        },
+        {
+          "relative_path": "website_phishing/splits/s2.json",
+          "indices_sha256": "a6588235e7917ea38a04f8cfa3500cb439ef0fdd09fd7a0e3689a79bd0452c54",
+          "counts": {
+            "fit": 721,
+            "validation": 181,
+            "test": 451
+          }
+        }
+      ],
+      "note": "Development pilot; full-table metadata is for auditing, not a router input."
+    },
+    {
+      "name": "splice",
+      "openml_name": "splice",
+      "dataset_id": 46958,
+      "task_id": 363702,
+      "problem_type": "multiclass",
+      "n_rows": 3190,
+      "n_features": 60,
+      "target": "SiteType",
+      "feature_names": [
+        "position_-30",
+        "position_-29",
+        "position_-28",
+        "position_-27",
+        "position_-26",
+        "position_-25",
+        "position_-24",
+        "position_-23",
+        "position_-22",
+        "position_-21",
+        "position_-20",
+        "position_-19",
+        "position_-18",
+        "position_-17",
+        "position_-16",
+        "position_-15",
+        "position_-14",
+        "position_-13",
+        "position_-12",
+        "position_-11",
+        "position_-10",
+        "position_-9",
+        "position_-8",
+        "position_-7",
+        "position_-6",
+        "position_-5",
+        "position_-4",
+        "position_-3",
+        "position_-2",
+        "position_-1",
+        "position_1",
+        "position_2",
+        "position_3",
+        "position_4",
+        "position_5",
+        "position_6",
+        "position_7",
+        "position_8",
+        "position_9",
+        "position_10",
+        "position_11",
+        "position_12",
+        "position_13",
+        "position_14",
+        "position_15",
+        "position_16",
+        "position_17",
+        "position_18",
+        "position_19",
+        "position_20",
+        "position_21",
+        "position_22",
+        "position_23",
+        "position_24",
+        "position_25",
+        "position_26",
+        "position_27",
+        "position_28",
+        "position_29",
+        "position_30"
+      ],
+      "ignored_columns": [],
+      "categorical_columns": [
+        "position_-30",
+        "position_-29",
+        "position_-28",
+        "position_-27",
+        "position_-26",
+        "position_-25",
+        "position_-24",
+        "position_-23",
+        "position_-22",
+        "position_-21",
+        "position_-20",
+        "position_-19",
+        "position_-18",
+        "position_-17",
+        "position_-16",
+        "position_-15",
+        "position_-14",
+        "position_-13",
+        "position_-12",
+        "position_-11",
+        "position_-10",
+        "position_-9",
+        "position_-8",
+        "position_-7",
+        "position_-6",
+        "position_-5",
+        "position_-4",
+        "position_-3",
+        "position_-2",
+        "position_-1",
+        "position_1",
+        "position_2",
+        "position_3",
+        "position_4",
+        "position_5",
+        "position_6",
+        "position_7",
+        "position_8",
+        "position_9",
+        "position_10",
+        "position_11",
+        "position_12",
+        "position_13",
+        "position_14",
+        "position_15",
+        "position_16",
+        "position_17",
+        "position_18",
+        "position_19",
+        "position_20",
+        "position_21",
+        "position_22",
+        "position_23",
+        "position_24",
+        "position_25",
+        "position_26",
+        "position_27",
+        "position_28",
+        "position_29",
+        "position_30"
+      ],
+      "relative_data_path": "splice/data.parquet",
+      "dtypes": {
+        "position_-30": "category",
+        "position_-29": "category",
+        "position_-28": "category",
+        "position_-27": "category",
+        "position_-26": "category",
+        "position_-25": "category",
+        "position_-24": "category",
+        "position_-23": "category",
+        "position_-22": "category",
+        "position_-21": "category",
+        "position_-20": "category",
+        "position_-19": "category",
+        "position_-18": "category",
+        "position_-17": "category",
+        "position_-16": "category",
+        "position_-15": "category",
+        "position_-14": "category",
+        "position_-13": "category",
+        "position_-12": "category",
+        "position_-11": "category",
+        "position_-10": "category",
+        "position_-9": "category",
+        "position_-8": "category",
+        "position_-7": "category",
+        "position_-6": "category",
+        "position_-5": "category",
+        "position_-4": "category",
+        "position_-3": "category",
+        "position_-2": "category",
+        "position_-1": "category",
+        "position_1": "category",
+        "position_2": "category",
+        "position_3": "category",
+        "position_4": "category",
+        "position_5": "category",
+        "position_6": "category",
+        "position_7": "category",
+        "position_8": "category",
+        "position_9": "category",
+        "position_10": "category",
+        "position_11": "category",
+        "position_12": "category",
+        "position_13": "category",
+        "position_14": "category",
+        "position_15": "category",
+        "position_16": "category",
+        "position_17": "category",
+        "position_18": "category",
+        "position_19": "category",
+        "position_20": "category",
+        "position_21": "category",
+        "position_22": "category",
+        "position_23": "category",
+        "position_24": "category",
+        "position_25": "category",
+        "position_26": "category",
+        "position_27": "category",
+        "position_28": "category",
+        "position_29": "category",
+        "position_30": "category",
+        "SiteType": "category"
+      },
+      "data_sha256": "6f012413d23e3756cc3d69d98f829c18ff67eb5a6c59f4a799a5d360ae029a32",
+      "raw_arff_sha256": "8ac6bffc317b38cd34c4b5bfdd658acc76a948c683295ad47f72129164ed7c9c",
+      "raw_arff_md5": "79bfb5daaaf0ddf84e364d55c0496dc6",
+      "official_splits_sha256": "cf23baee5b4ca83b8e56459b4a5547f69ce10645ef65e6b07c53f938ec7a00c0",
+      "splits": [
+        {
+          "relative_path": "splice/splits/s0.json",
+          "indices_sha256": "e8087087f899f677f5a1a4622702dee4dbf9ae21b5f060119a3196cf01705f9f",
+          "counts": {
+            "fit": 1700,
+            "validation": 426,
+            "test": 1064
+          }
+        },
+        {
+          "relative_path": "splice/splits/s1.json",
+          "indices_sha256": "42e116aa57e0021cd00de79883b586de1b7dfa1a9b28c64e389c80308736c079",
+          "counts": {
+            "fit": 1700,
+            "validation": 426,
+            "test": 1064
+          }
+        },
+        {
+          "relative_path": "splice/splits/s2.json",
+          "indices_sha256": "c09fa0d6f93c40baee997081a68300ad4d8e8e9272a369d66e1d560034fc31f4",
+          "counts": {
+            "fit": 1700,
+            "validation": 426,
+            "test": 1064
+          }
+        }
+      ],
+      "note": "Development pilot; full-table metadata is for auditing, not a router input."
+    },
+    {
+      "name": "concrete_compressive_strength",
+      "openml_name": "concrete_compressive_strength",
+      "dataset_id": 46917,
+      "task_id": 363625,
+      "problem_type": "regression",
+      "n_rows": 1030,
+      "n_features": 8,
+      "target": "ConcreteCompressiveStrength",
+      "feature_names": [
+        "Cement",
+        "BlastFurnaceSlag",
+        "FlyAsh",
+        "Water",
+        "Superplasticizer",
+        "CoarseAggregate",
+        "FineAggregate",
+        "Age"
+      ],
+      "ignored_columns": [],
+      "categorical_columns": [],
+      "relative_data_path": "concrete_compressive_strength/data.parquet",
+      "dtypes": {
+        "Cement": "float64",
+        "BlastFurnaceSlag": "float64",
+        "FlyAsh": "float64",
+        "Water": "float64",
+        "Superplasticizer": "float64",
+        "CoarseAggregate": "float64",
+        "FineAggregate": "float64",
+        "Age": "int64",
+        "ConcreteCompressiveStrength": "float64"
+      },
+      "data_sha256": "451cfc7238aa3b20786b273ec995cd461ea24ba146b7925c058a78c1acfa7c74",
+      "raw_arff_sha256": "f07503a36aa142c53a9cdee05208bf6daf3d620adc2e1f4b10732f82c9bcceea",
+      "raw_arff_md5": "e90e5ac58ffc1c8f814d46ccf67f6fb9",
+      "official_splits_sha256": "3f3a17de4d19bade7466313cd803f7a0f6c750dc9d54e4e77d183846b4b70a0f",
+      "splits": [
+        {
+          "relative_path": "concrete_compressive_strength/splits/s0.json",
+          "indices_sha256": "4fbe3162f065ab740be3a33fdb9203d2fe276a4e65155e1c8e69b2180f747494",
+          "counts": {
+            "fit": 548,
+            "validation": 138,
+            "test": 344
+          }
+        },
+        {
+          "relative_path": "concrete_compressive_strength/splits/s1.json",
+          "indices_sha256": "e43b6bc2e1aba6e227fb7aebd751f39201f45f9553caddf5699497e4a4c1b2f9",
+          "counts": {
+            "fit": 548,
+            "validation": 138,
+            "test": 344
+          }
+        },
+        {
+          "relative_path": "concrete_compressive_strength/splits/s2.json",
+          "indices_sha256": "786fb6a26becfbf2e533beffe02e3988defd18cbaff0baeb0a38079056ce4e23",
+          "counts": {
+            "fit": 548,
+            "validation": 138,
+            "test": 344
+          }
+        }
+      ],
+      "note": "Development pilot; full-table metadata is for auditing, not a router input."
+    },
+    {
+      "name": "healthcare_insurance_expenses",
+      "openml_name": "healthcare_insurance_expenses",
+      "dataset_id": 46931,
+      "task_id": 363675,
+      "problem_type": "regression",
+      "n_rows": 1338,
+      "n_features": 6,
+      "target": "charges",
+      "feature_names": [
+        "age",
+        "sex",
+        "bmi",
+        "children",
+        "smoker",
+        "region"
+      ],
+      "ignored_columns": [],
+      "categorical_columns": [
+        "sex",
+        "smoker",
+        "region"
+      ],
+      "relative_data_path": "healthcare_insurance_expenses/data.parquet",
+      "dtypes": {
+        "age": "int64",
+        "sex": "category",
+        "bmi": "float64",
+        "children": "int64",
+        "smoker": "category",
+        "region": "category",
+        "charges": "float64"
+      },
+      "data_sha256": "4ab5687d5b38286816cbfeb94056cd3351ede281725f5bbb068c94b072245747",
+      "raw_arff_sha256": "965d110f8c9a4b22ff49e7faf8d6705898517e6c2f01428654f0c5c7c6781306",
+      "raw_arff_md5": "4541ab346c53b8352f0d3b918f28693f",
+      "official_splits_sha256": "494617797a4398f3051f302e9f690df8fb4b349b48958c4d417eda15414fd88b",
+      "splits": [
+        {
+          "relative_path": "healthcare_insurance_expenses/splits/s0.json",
+          "indices_sha256": "2184e295447b9ff291401ece01e159d126a85cecdc12c19e06177a6141fe44ae",
+          "counts": {
+            "fit": 713,
+            "validation": 179,
+            "test": 446
+          }
+        },
+        {
+          "relative_path": "healthcare_insurance_expenses/splits/s1.json",
+          "indices_sha256": "b03818f1e7453effcf1b4ec3150eddabdd5c49982aa9af58063cf6b41aa7d3bb",
+          "counts": {
+            "fit": 713,
+            "validation": 179,
+            "test": 446
+          }
+        },
+        {
+          "relative_path": "healthcare_insurance_expenses/splits/s2.json",
+          "indices_sha256": "c1ed8b613ebd57f19ea0a2bb080d04af79402c81d08d7139c1883265325892d7",
+          "counts": {
+            "fit": 713,
+            "validation": 179,
+            "test": 446
+          }
+        }
+      ],
+      "note": "Development pilot; full-table metadata is for auditing, not a router input."
+    }
+  ],
+  "limix_python_tree_sha256": "7ba3314b155bb2cc12f0563051ba4fc39af65d17f05dc0b4941b6082859ec329",
+  "limix_source_hash_rule": "Python source SHA256, CRLF normalized to LF; otherwise exact file bytes"
+}
